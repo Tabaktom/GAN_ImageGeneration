@@ -14,7 +14,6 @@ def generator(x):
     b0 = tf.get_variable('G_b0', [256], initializer=b_init)
     h0 = tf.nn.leaky_relu(tf.matmul(x, w0) + b0)
 
-    ### Code:ToDo (Change the architecture as CW2 Guidance required)
     # 2nd hidden layer
     w1 = tf.get_variable('G_w1', [h0.get_shape()[1], 512], initializer=w_init)
     b1 = tf.get_variable('G_b1', [512], initializer=b_init)
@@ -38,8 +37,6 @@ def discriminator(x, drop_out):
     # initializers
     w_init = tf.truncated_normal_initializer(mean=0, stddev=0.02)
     b_init = tf.constant_initializer(0.)
-
-    ###  Code: ToDO( Change the architecture as CW2 Guidance required)
 
     # 1st hidden layer
     w0 = tf.get_variable('D_w0', [x.get_shape()[1], 1024], initializer=w_init)
@@ -71,9 +68,6 @@ fixed_z_ = np.random.normal(0, 1, (25, 100)) ###
 
 def show_result(num_epoch, show = False, save = False, path = 'result.png', isFix=False): #added isfix
     z_ = np.random.normal(0, 1, (25, 100))    # z_ is the input of generator, every epochs will random produce input
-    ##Code:ToDo complete the rest of part
-
-
     if isFix:
         test_images = sess.run(G_z, {z: fixed_z_, drop_out: 0.0})
     else:
